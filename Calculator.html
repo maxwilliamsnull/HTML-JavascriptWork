@@ -4,16 +4,15 @@
         <meta charset="utf8">
         <script>
             function calc(){
-                var sel = document.getElementById("opers")
-                var op = sel.options[sel.selectedIndex].innerHTML
-                var numberOne = document.getElementById("b1").value
-                var numberTwo = document.getElementById("b2").value
-                var equation = numberOne + " " + op + " " + numberTwo
-                var answer = "Answer: " + eval(equation)
+                sel = document.getElementById("opers")
+                op = sel.options[sel.selectedIndex].innerHTML
+                numberOne = document.getElementById("b1").value
+                numberTwo = document.getElementById("b2").value
+                equation = numberOne + " " + op + " " + numberTwo
+                answer = "Answer: " + eval(equation)
                 if(op == '/' && numberTwo == 0){
                     answer = "Cannot divide by 0"
                 }
-                console.log(answer)
                 document.getElementById("ans").innerHTML = answer
             }
         </script>
