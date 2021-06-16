@@ -24,5 +24,4 @@ function hideAnswer(){
     var disp = document.getElementById("ans")
     disp.hidden=true
     disp.innerHTML = ""
-    console.log(disp.value)
 }
