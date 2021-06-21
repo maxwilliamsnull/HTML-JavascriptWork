@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf8">
+        <script src="Hangman.js"></script>
+    </head>
+    <body>
+        <div id="Box">
+            <form id>
+                <label for="b1">Secret Word</label><br>
+                <input type="text" id="secret" name="secret"><br>
+                <input type="button" value="button" onclick="hideBox('Box'); setWord(); setPhoto(0);"><br><br>
+            </form>
+        </div>
+        <img id="gallows" src="Images\0.jpg" onclick="changePhoto();">
+        <br><br><br><br>
+        <div class="btn-group" onclick="changePhoto()">
+            <button>A</button>
+            <button>B</button>
+            <button>C</button>
+            <button>D</button>
+            <button>E</button>
+            <button>F</button>
+            <button>G</button>
+            <button>H</button>
+            <button>I</button>
+            <button>J</button>
+            <button>K</button>
+            <button>L</button>
+            <button>M</button>
+            <button>N</button>
+            <button>O</button>
+            <button>P</button>
+            <button>Q</button>
+            <button>R</button>
+            <button>S</button>
+            <button>T</button>
+            <button>U</button>
+            <button>V</button>
+            <button>W</button>
+            <button>X</button>
+            <button>Y</button>
+            <button>Z</button>
+          </div>
+        <button type="button" onclick="resetGame();">RESET</button>
+    </body>
+</html>
