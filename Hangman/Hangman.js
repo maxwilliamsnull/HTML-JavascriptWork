@@ -1,5 +1,6 @@
 var image_number = 0
 var secret_word = ""
+var display_word = ""
 
 function hide(id){
     sel = document.getElementById(id)
@@ -46,9 +47,27 @@ function changePhoto(){
 }
 
 function setWord(){
+    display_word = ""
     var box = document.getElementById("secret")
     secret_word = box.value
     console.log(secret_word)
+    for(i = 0; i < secret_word.length; i++){
+        display_word += '?'
+    }
+}
+
+function make_guess(letter){
+    letterInWord = false
+    for(i = 0; i < secret_word.length; i++){
+        if(secret_word.charAt(i) == letter){
+            display_word = display_word.substring(0, i) + 
+            letter + display_word.substring(i + 1, display_word.length)
+            letterInWord = true
+        }
+    }
+    if(!letterInWord){
+        changePhoto()
+    }
 }
 
 function resetGame(){
