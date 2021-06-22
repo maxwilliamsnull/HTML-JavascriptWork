@@ -71,6 +71,6 @@ function make_guess(letter){
 }
 
 function resetGame(){
-    setPhoto(-1)
+    setPhoto(0)
     showBox("Box")
 }
