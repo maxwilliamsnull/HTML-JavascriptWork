@@ -1,24 +1,7 @@
 var image_number = 0
 var secret_word = ""
 var display_word = ""
-
-function hide(id){
-    sel = document.getElementById(id)
-    op = sel.options[sel.selectedIndex].innerHTML
-    numberOne = document.getElementById(boxOne).value
-    numberTwo = document.getElementById(boxTwo).value
-    equation = numberOne + " " + op + " " + numberTwo
-    answer = "Answer: " + eval(equation)
-    if(op == '/' && numberTwo == 0){
-        answer = "Cannot divide by 0"
-    }
-    document.getElementById("ans").innerHTML = answer
-
-    var disp = document.getElementById("ans")
-    if(disp.hidden){
-         disp.hidden=false
-    }
-}
+numbers = []
 
 function hideBox(id){
     var disp = document.getElementById(id)
@@ -73,4 +56,24 @@ function make_guess(letter){
 function resetGame(){
     setPhoto(0)
     showBox("Box")
+}
+
+function generateButtons(){
+    start_value = "A".charCodeAt()
+    end_value = "Z".charCodeAt()
+    group = document.getElementById("letters")
+    group.innerHTML = ''
+
+    for(i = start_value; i <= end_value; i++){
+        letter = String.fromCharCode(i)
+        btn = document.createElement("button")
+        btn.innerHTML = letter
+        function logValue(txt){
+            return function(){
+              console.log(txt);   
+            };
+        }
+        btn.onclick = logValue(letter)
+        group.appendChild(btn)
+    }
 }
