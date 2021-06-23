@@ -9,12 +9,14 @@
             <form id>
                 <label for="b1">Secret Word</label><br>
                 <input type="text" id="secret" name="secret"><br>
-                <input type="button" value="button" onclick="hideBox('Box'); setWord(); setPhoto(0);  generateButtons();"><br><br>
+                <input type="button" value="button" onclick="hideBox('Box'); setWord(); setPhoto(0); generateButtons(); updateDisplay();"><br><br>
             </form>
         </div>
         <img id="gallows" src="Images\0.jpg" onclick="changePhoto();">
         <br><br><br><br>
         <div class="btn-group" id="letters"></div>
         <button type="button" onclick="resetGame();">RESET</button>
+        <br><br>
+        <textarea id="display" contenteditable="false" onclick="updateDisplay();"></textarea>
     </body>
 </html>
