@@ -1,4 +1,4 @@
-var image_number = 0
+var image_number = 4
 var secret_word = ""
 var display_word = ""
 
@@ -38,7 +38,26 @@ function setWord(){
     }
 }
 
+function checkForWinOrLoss(){
+    if(secret_word==display_word){
+        window.alert("YOU WIN")
+        disableButtons()
+        console.log("WIN")
+    } else if(image_number == 10){
+        window.alert("YOU LOSE")
+        disableButtons()
+        console.log("LOSS")
+        revealWord()
+    }
+}
+
+function revealWord(){
+    display_word = secret_word
+    updateDisplay()
+}
+
 function make_guess(button){
+    button.disabled = true
     letterInWord = false
     letter = button.innerHTML
     for(var i = 0; i < secret_word.length; i++){
@@ -51,9 +70,11 @@ function make_guess(button){
     }
     if(!letterInWord){
         changePhoto()
+        console.log("change")
     }
     updateDisplay()
-    button.disabled = true
+    console.log(image_number)
+    checkForWinOrLoss()
 }
 
 function updateDisplay(){
@@ -64,7 +85,8 @@ function updateDisplay(){
 }
 
 function resetGame(){
-    setPhoto(0)
+    setPhoto(4)
+    image_number = 4
     showBox("Box")
     clearButtons()
     var box = document.getElementById("secret")
@@ -82,12 +104,18 @@ function clearButtons(){
     }
 }
 
+function disableButtons(){
+    var btns = document.getElementsByClassName("btn-group")
+    console.log(btns.nextSibling)
+}
+
 function generateButtons(){
-    start_value = "A".charCodeAt()
-    end_value = "Z".charCodeAt()
-    group = document.getElementById("letters")
+    var start_value = "A".charCodeAt()
+    var end_value = "Z".charCodeAt()
+    var group = document.getElementById("letters")
     group.innerHTML = ''
 
+    number = 0
     for(i = start_value; i <= end_value; i++){
         letter = String.fromCharCode(i)
         btn = document.createElement("button")
@@ -98,6 +126,8 @@ function generateButtons(){
             }
         }
         btn.onclick = logValue(btn)
-        group.appendChild(btn)
+        btn.id = "Button"
+        group.append(btn)
+        number++
     }
 }
