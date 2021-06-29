@@ -1,5 +1,5 @@
-var image_number = 4
 const MINIMUM_LENGTH = 4
+var image_number = 4
 var secret_word = ""
 var display_word = ""
 
@@ -21,7 +21,7 @@ function startGame(){
         generateButtons()
         updateDisplay()
     } else {
-        window.alert("INVALID WORD")
+        window.alert("INVALID WORD: Must be at least " + String(MINIMUM_LENGTH) + " letters long")
     }
 }
 
