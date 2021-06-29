@@ -1,6 +1,29 @@
 var image_number = 4
+const MINIMUM_LENGTH = 4
 var secret_word = ""
 var display_word = ""
+
+
+function getWord(){
+    var box = document.getElementById("secret")
+    return box.value.toUpperCase()
+}
+function wordIsValid(){
+    var word = getWord()
+    return word.length >= MINIMUM_LENGTH
+}
+
+function startGame(){
+    if(wordIsValid()){
+        hideBox("Box")
+        setWord()
+        setPhoto(4)
+        generateButtons()
+        updateDisplay()
+    } else {
+        window.alert("INVALID WORD")
+    }
+}
 
 function hideBox(id){
     var disp = document.getElementById(id)
@@ -30,9 +53,7 @@ function changePhoto(){
 
 function setWord(){
     display_word = ""
-    var box = document.getElementById("secret")
-    secret_word = box.value.toUpperCase()
-    console.log(secret_word)
+    secret_word = getWord()
     for(i = 0; i < secret_word.length; i++){
         display_word += '?'
     }
@@ -105,8 +126,11 @@ function clearButtons(){
 }
 
 function disableButtons(){
-    var btns = document.getElementsByClassName("btn-group")
-    console.log(btns.nextSibling)
+    var buttons = document.querySelectorAll("button")
+    for(var i = 0; i < buttons.length - 1; i++){
+        btn = buttons[i]
+        btn.disabled = true
+    }
 }
 
 function generateButtons(){
@@ -120,12 +144,14 @@ function generateButtons(){
         letter = String.fromCharCode(i)
         btn = document.createElement("button")
         btn.innerHTML = letter
-        function logValue(button){
+        btn.type = "button"
+        btn.class = "inputButtons"
+        function assignFunction(button){
             return function(){
                 make_guess(button)    
             }
         }
-        btn.onclick = logValue(btn)
+        btn.onclick = assignFunction(btn)
         btn.id = "Button"
         group.append(btn)
         number++

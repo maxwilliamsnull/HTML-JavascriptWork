@@ -9,13 +9,13 @@
             <form id>
                 <label for="b1">Secret Word</label><br>
                 <input type="text" id="secret" name="secret"><br>
-                <input type="button" value="button" onclick="hideBox('Box'); setWord(); setPhoto(4); generateButtons(); updateDisplay();"><br><br>
+                <input type="button" value="button" onclick="startGame()"><br><br>
             </form>
         </div>
         <img id="gallows" src="Images\0.jpg" onclick="disableButtons();">
         <br><br><br><br>
         <div class="btn-group" id="letters" name="buttons"></div>
-        <button type="button" onclick="resetGame();">RESET</button>
+        <button type="reset" onclick="resetGame();">RESET</button>
         <br><br>
         <textarea id="display" contenteditable="false" onclick="updateDisplay();"></textarea>
     </body>
